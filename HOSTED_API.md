@@ -1,5 +1,7 @@
 # 用户 API 聚合（BYOK）
 
+已于 **2026-11-11** 上线 [OUA Relay「我的 API」](https://oua-cdn.wolfoxlabs.xyz/my-apis)，生产版本为 `v1.0.0-rc.48-wolfox-byok-99171a1f`。
+
 本分支在 New API 开发版上增加用户自己的上游接入。控制台入口：**我的 API**（`/my-apis`）。
 
 | 账户等级 | 上游接入数 | 每日 tokens |
@@ -58,4 +60,6 @@ bun run build
 
 安全设计参考 [OWASP ASVS 5.0.0](https://asvs.owasp.org/)、[Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)、[Session Management](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)、[SSRF Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html) 和 [IDOR Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html)，验证对应的凭据隔离、过期、重放、越权及出站地址控制；不代表对整个上游项目的完整合规认证。
 
-这是独立功能分支，尚未部署生产。生产发布前应备份数据库与加密秘密，并使用隔离环境复跑实际生产二进制的验证。回退应用代码时保留新增托管表，不应删除用户上游数据。
+本次上线已备份原版本与数据库，使用最终 Linux 发布包在无外网隔离环境完成 16 项原有选路回归、聚合 HTTP 检查及 VIP 五个接入成功／第六个拒绝的检查。生产数据库副本连续启动两次，确认升级和重复迁移保留原有账户、余额、密钥、渠道及价格；公网登录和手机页面也已验证。
+
+生产临时验证账户及密钥已清理，验证未调用真实推理上游或消耗平台计费额度。平台付费备用仍默认关闭，未自动升级任何账户为 VIP。后续发布仍须备份数据库和稳定的加密秘密；回退应用代码时保留新增托管表，不用历史数据库覆盖上线后的余额和请求记录。
