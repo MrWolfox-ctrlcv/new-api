@@ -58,6 +58,8 @@
 
 ## 📝 Project Description
 
+**Wolfox feature branch:** [User-owned API aggregation / 用户 API 聚合](./HOSTED_API.md) — private upstreams, free/VIP daily token allowances, and opt-in paid platform fallback.
+
 New API is a self-hosted AI gateway for applications, agents, and teams. Connect upstream model services, expose a consistent API to your clients, and manage routing, access, usage, and costs in one place.
 
 Use it to share authorized model access across a team, switch providers without configuring every client again, or operate a private multi-model service with a web console. Upstreams include OpenAI, Anthropic, Google Gemini, Azure OpenAI, AWS Bedrock, Vertex AI, DeepSeek, Qwen, and other compatible services.

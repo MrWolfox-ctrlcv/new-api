@@ -340,6 +340,10 @@ func migrateDB() error {
 	}
 
 	err := DB.AutoMigrate(
+		&HostedAccount{},
+		&HostedUpstream{},
+		&HostedUsage{},
+		&HostedReservation{},
 		&Channel{},
 		&Token{},
 		&User{},

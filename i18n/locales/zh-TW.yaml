@@ -2,6 +2,15 @@
 # 中文（繁體）翻譯檔案
 
 # Errors returned to AI clients
+hosted.hosted_busy: "私人 API 並行請求過多，請等待目前請求完成後再試"
+hosted.hosted_unavailable: "API 託管服務暫時無法使用"
+hosted.invalid_hosted_request: "私人 API 請求無效，目前僅支援有輸出上限的 OpenAI 相容文字對話"
+hosted.model_not_allowed: "此 API 金鑰無權存取所請求的模型"
+hosted.hosted_upstream_failed: "私人上游均未成功，且未啟用平台付費備援"
+hosted.hosted_daily_limit: "帳戶今日的私人 API token 限額已用盡"
+hosted.hosted_settlement_failed: "私人 API 用量結算失敗，已保留預留用量"
+hosted.invalid_hosted_response: "私人上游傳回無效回應，已保留預留用量"
+hosted.hosted_usage_missing: "私人上游未傳回有效 token 用量，已保留預留用量"
 common.database_error: "資料庫出錯，請聯繫管理員"
 auth.user_banned: "使用者已被封禁"
 token.get_info_failed: "獲取令牌資訊失敗，請稍後重試"

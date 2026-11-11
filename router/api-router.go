@@ -22,6 +22,12 @@ func SetApiRouter(router *gin.Engine) {
 	apiRouter.Use(middleware.BodyStorageCleanup()) // 清理请求体存储
 	apiRouter.Use(middleware.GlobalAPIRateLimit())
 	anonymousRequestBodyLimit := middleware.AnonymousRequestBodyLimit()
+	hostedRoute := apiRouter.Group("/hosted", middleware.DisableCache(), middleware.UserAuth())
+	hostedRoute.GET("", controller.GetHostedAPIs)
+	hostedRoute.POST("/upstreams", middleware.CriticalRateLimit(), middleware.UserCriticalRateLimit("hosted-api"), controller.SaveHostedAPI)
+	hostedRoute.PUT("/upstreams/:id", middleware.CriticalRateLimit(), middleware.UserCriticalRateLimit("hosted-api"), controller.SaveHostedAPI)
+	hostedRoute.DELETE("/upstreams/:id", middleware.CriticalRateLimit(), middleware.UserCriticalRateLimit("hosted-api"), controller.DeleteHostedAPI)
+	hostedRoute.PUT("/settings", middleware.CriticalRateLimit(), middleware.UserCriticalRateLimit("hosted-api"), controller.UpdateHostedSettings)
 	{
 		apiRouter.GET("/setup", controller.GetSetup)
 		apiRouter.POST("/setup", anonymousRequestBodyLimit, controller.PostSetup)

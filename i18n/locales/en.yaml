@@ -1,6 +1,15 @@
 # English translations
 
 # Errors returned to AI clients
+hosted.hosted_busy: "Too many concurrent private API requests; try again after a running request completes"
+hosted.hosted_unavailable: "Private API hosting is temporarily unavailable"
+hosted.invalid_hosted_request: "Invalid private API request; only bounded OpenAI-compatible text chat is supported"
+hosted.model_not_allowed: "This API key is not allowed to access the requested model"
+hosted.hosted_upstream_failed: "No private upstream succeeded; paid platform fallback is disabled"
+hosted.hosted_daily_limit: "Your account has reached its daily private API token allowance"
+hosted.hosted_settlement_failed: "Private API usage could not be settled; reserved tokens were retained"
+hosted.invalid_hosted_response: "The private upstream returned an invalid response; reserved tokens were retained"
+hosted.hosted_usage_missing: "The private upstream did not return valid token usage; reserved tokens were retained"
 common.database_error: "Database error, please contact the administrator"
 auth.user_banned: "User has been banned"
 token.get_info_failed: "Failed to get token info, please try again later"

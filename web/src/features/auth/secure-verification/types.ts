@@ -25,6 +25,7 @@ export type VerificationMethod =
   | 'oauth'
   | 'session'
 export type SecurityProofScope =
+  | 'hosted_api.manage'
   | 'channel.key.read'
   | 'passkey.register'
   | 'passkey.delete'
@@ -51,6 +52,14 @@ export type SecurityProofScope =
 export type AdminUserManageAction = 'disable' | 'enable' | 'promote' | 'demote'
 
 export type VerificationOperation =
+  | {
+      scope: 'hosted_api.manage'
+      context: {
+        action: 'save' | 'delete' | 'fallback'
+        upstream_id: number
+        digest: string
+      }
+    }
   | { scope: 'channel.key.read'; context: { channel_id: number } }
   | {
       scope: 'account.binding.bind'
@@ -92,6 +101,7 @@ export type VerificationOperation =
       scope: Exclude<
         SecurityProofScope,
         | 'channel.key.read'
+        | 'hosted_api.manage'
         | 'account.binding.bind'
         | 'account.binding.unbind'
         | 'access_token.generate'

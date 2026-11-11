@@ -89,6 +89,11 @@ export function useSidebarData(badges: SidebarBadges = {}): SidebarData {
             icon: Key,
           },
           {
+            title: t('My APIs'),
+            url: '/my-apis',
+            icon: PlugZap,
+          },
+          {
             title: t('Usage Logs'),
             url: '/usage-logs/common',
             icon: FileText,
